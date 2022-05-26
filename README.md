@@ -1,2 +1,2 @@
 # bptf_pricelist
-The backpack.tf pricelist that updates every day
+The backpack.tf pricelist that updates every hour
