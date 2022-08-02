@@ -38,15 +38,18 @@ async function getPrices(name) {
 }
 
 async function main() {
-    let a = await getPrices("Killstreak");
-    let b = await getPrices("(Factory New)");
-    let c = await getPrices("(Minimal Wear)");
-    let d = await getPrices("(Field-Tested)");
-    let e = await getPrices("(Well-Worn)");
-    let f = await getPrices("(Battle Scarred)");
+    // let a = await getPrices("Killstreak");
+    // let b = await getPrices("(Factory New)");
+    // let c = await getPrices("(Minimal Wear)");
+    // let d = await getPrices("(Field-Tested)");
+    // let e = await getPrices("(Well-Worn)");
+    // let f = await getPrices("(Battle Scarred)");
 
-    let items = [...a, ...b, ...c, ...d, ...e, ...f];
+    // let items = [...a, ...b, ...c, ...d, ...e, ...f];
 
-    let itemsWithoutDuplicates = [...new Set(items.map(a => a.name))].map(a => items.find(b => b.name === a));
+    // let itemsWithoutDuplicates = [...new Set(items.map(a => a.name))].map(a => items.find(b => b.name === a));
+
+    // testing if actions actually work
+    let itemsWithoutDuplicates = [];
     fs.writeFileSync("../marketPrices.json", JSON.stringify(itemsWithoutDuplicates));
 }
