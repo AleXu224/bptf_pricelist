@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Run the script
-        run: node ./scripts/bptfSchema.js ${{SOMESECRET}}
+        run: node ./scripts/bptfSchema.js ${{secrets.SOMESECRET}}
 
       - name: Commit and push changes
         run: |
