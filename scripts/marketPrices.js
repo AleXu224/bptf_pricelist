@@ -51,5 +51,5 @@ async function main() {
 
     // testing if actions actually work
     let itemsWithoutDuplicates = [];
-    fs.writeFileSync("../marketPrices.json", JSON.stringify(itemsWithoutDuplicates));
+    fs.writeFileSync("./marketPrices.json", JSON.stringify(itemsWithoutDuplicates));
 }
