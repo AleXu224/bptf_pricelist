@@ -1,6 +1,7 @@
 const axios = require("axios");
 const fs = require("fs");
 
+let failCount = 0;
 main();
 
 async function getPrices(name) {
@@ -20,14 +21,23 @@ async function getPrices(name) {
         try {
             response = await axios(`https://steamcommunity.com/market/search/render/?query=${name}&start=${start}&count=100&search_descriptions=0&sort_column=name&sort_dir=desc&appid=440&norender=1`);
         } catch (error) {
+            failCount++;
+            if (failCount >= 5) {
+                console.log("Failed 5 times, exiting");
+                process.exit(1);
+            }
+            if (error.response.status == 429) {
+                console.log("Rate limited, waiting 5 minutes");
+                await new Promise(resolve => setTimeout(resolve, 300000));
+                continue;
+            }
             console.log(error);
-            console.log("errr :(");
-            return [];
+            continue;
         }
 
         let data = response.data;
         if (data.total_count == 0) {
-            console.log("They are trying to bamboozle us!") ;
+            console.log("Empty response, retrying");
             continue;
         }
         items.push(...data.results);
