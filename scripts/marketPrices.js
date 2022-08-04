@@ -26,10 +26,12 @@ async function getPrices(name) {
                 console.log("Failed 5 times, exiting");
                 process.exit(1);
             }
-            if (error.response.status == 429) {
-                console.log("Rate limited, waiting 5 minutes");
-                await new Promise(resolve => setTimeout(resolve, 300000));
-                continue;
+            if (error.response) {
+                if (error.response.status == 429) {
+                    console.log("Rate limited, waiting 5 minutes");
+                    await new Promise(resolve => setTimeout(resolve, 300000));
+                    continue;
+                }
             }
             console.log(error);
             continue;
