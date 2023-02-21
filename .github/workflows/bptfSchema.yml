@@ -36,9 +36,6 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          git config --global user.email "username@users.noreply.github.com"
-
           git pull
           git add -A
           git commit -m "Update bptfSchema"
