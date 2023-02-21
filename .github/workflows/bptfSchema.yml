@@ -34,9 +34,4 @@ jobs:
       - name: Run the script
         run: node ./scripts/bptfSchema.js ${{secrets.BPTF_KEY}}
 
-      - name: Commit and push changes
-        run: |
-          git pull
-          git add -A
-          git commit -m "Update bptfSchema"
-          git push
+      - uses: stefanzweifel/git-auto-commit-action@v4
