@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/AleXu224/bptf_pricelist#readme",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "vdf": "^0.0.2"
   }
 }
